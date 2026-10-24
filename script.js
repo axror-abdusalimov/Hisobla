@@ -8,7 +8,17 @@ const fields = [
 const statusText = document.getElementById('form-status');
 const resultValues = document.getElementById('result-values');
 const resultEmpty = document.getElementById('result-empty');
-const money = new Intl.NumberFormat('uz-UZ', { maximumFractionDigits: 2 });
+// Har bir brauzerda mingliklar bo‘sh joy, kasr qismi vergul bilan yoziladi.
+const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
+const money = {
+    format(value) {
+        return numberFormatter.formatToParts(value).map(part => {
+            if (part.type === 'group') return ' ';
+            if (part.type === 'decimal') return ',';
+            return part.value;
+        }).join('');
+    }
+};
 
 // Namunani bir bosishda kataklarga joylab, haqiqiy hisobni bajaramiz.
 document.getElementById('use-example').addEventListener('click', () => {
