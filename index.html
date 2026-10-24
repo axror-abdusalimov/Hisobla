@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisobla — Savdo hisoblagichi</title>
+    <meta name="description" content="Savdo tushumi, mahsulot xarajati va foydani hisoblash uchun sodda vosita.">
+    <meta name="theme-color" content="#172c49">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#asosiy-mazmun">Asosiy mazmunga o‘tish</a>
+    <header class="site-header container" id="sahifa-boshi">
+        <a class="brand" href="index.html" aria-label="Hisobla bosh sahifa"><span class="brand-icon" aria-hidden="true">=</span>Hisobla<span class="brand-dot">.</span></a>
+        <nav class="site-nav" aria-label="Asosiy menyu">
+            <a href="#hisoblagich">Hisoblagich</a>
+            <a href="#loyiha-haqida">Loyiha haqida</a>
+            <a href="#men-haqimda">Men haqimda</a>
+        </nav>
+    </header>
+
+    <main class="container" id="asosiy-mazmun">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow"><span></span> SODDA. TUSHUNARLI. QULAY.</p>
+                <h1 id="hero-title">Savdongiz hisobini <span>aniq biling.</span></h1>
+                <p class="intro">Raqamlar orasida adashmang. Xarid narxi, sotuv narxi va mahsulot soni orqali savdoingiz natijasini bilib oling.</p>
+                <a class="button" href="#hisoblagich">Hisoblagichga o‘tish <span aria-hidden="true">↓</span></a>
+                <p class="hero-note">3 ta qiymat. Tushunarli natija.</p>
+            </div>
+
+            <div class="preview" id="hisob-namunasi" role="region" aria-labelledby="preview-title">
+                <div class="preview-heading"><h2 id="preview-title">Savdo hisoboti</h2><span class="sample-badge">Namuna</span></div>
+                <p class="preview-subtitle">20 dona mahsulot uchun hisob</p>
+                <div class="sample-inputs">
+                    <div><span>Xarid narxi</span><strong>10 000 <small>so‘m</small></strong></div>
+                    <div><span>Sotuv narxi</span><strong>15 000 <small>so‘m</small></strong></div>
+                </div>
+                <dl class="totals">
+                    <div><dt>Jami tushum</dt><dd>300 000 <small>so‘m</small></dd></div>
+                    <div><dt>Xarid xarajati</dt><dd>200 000 <small>so‘m</small></dd></div>
+                </dl>
+                <div class="profit"><div><span>Foyda</span><strong>+100 000 <small>so‘m</small></strong></div><span class="profit-icon" aria-hidden="true">↗</span></div>
+                <p class="preview-note">Qo‘shimcha xarajatlar hisobga olinmagan.</p>
+                <button class="sample-action" id="use-example" type="button">Shu misolni hisoblagichda sinash <span aria-hidden="true">↗</span></button>
+            </div>
+        </section>
+
+        <section class="calculator-section" id="hisoblagich" aria-labelledby="calculator-title">
+            <div class="section-heading">
+                <p class="eyebrow">SAVDO HISOBLAGICHI</p>
+                <h2 id="calculator-title">Savdo ma’lumotlarini kiriting</h2>
+                <p>Barcha narxlarni bir dona mahsulot uchun so‘mda yozing. Hisoblash uchun ro‘yxatdan o‘tish shart emas.</p>
+            </div>
+
+            <!-- Forma foydalanuvchi kiritadigan ma’lumotlarni bir joyga jamlaydi. -->
+            <div class="calculator-layout">
+            <form class="calculator-form" aria-describedby="form-status" novalidate>
+                <div class="fields-grid">
+                    <div class="field">
+                        <label for="purchase-price">Xarid narxi (so‘m)</label>
+                        <input id="purchase-price" name="purchasePrice" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Masalan: 10000" aria-describedby="purchase-help" required>
+                        <p id="purchase-help">Bitta mahsulotni sotib olgan narxingiz.</p>
+                    </div>
+                    <div class="field">
+                        <label for="sale-price">Sotuv narxi (so‘m)</label>
+                        <input id="sale-price" name="salePrice" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Masalan: 15000" aria-describedby="sale-help" required>
+                        <p id="sale-help">Bitta mahsulotni sotgan narxingiz.</p>
+                    </div>
+                    <div class="field">
+                        <label for="quantity">Sotilgan mahsulot soni (dona)</label>
+                        <input id="quantity" name="quantity" type="number" min="1" step="1" inputmode="numeric" placeholder="Masalan: 20" aria-describedby="quantity-help" required>
+                        <p id="quantity-help">Sotilgan mahsulotlar sonini butun sonda yozing.</p>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="action-buttons">
+                    <button class="button" type="submit">Hisoblash <span aria-hidden="true">→</span></button>
+                    <button class="button button-secondary" type="reset">Tozalash</button>
+                    </div>
+                    <p id="form-status" role="status">Uchta katakni to‘ldirib, hisoblash tugmasini bosing.</p>
+                </div>
+                <noscript><p class="scope-note">Hisoblagich ishlashi uchun brauzeringizda JavaScript yoqilgan bo‘lishi kerak.</p></noscript>
+            </form>
+            <aside class="result-panel" aria-labelledby="result-title">
+                <h3 id="result-title" tabindex="-1">Hisob natijasi</h3>
+                <p id="result-empty">Natijalar hisoblash tugmasini bosganingizdan keyin shu yerda chiqadi.</p>
+                <div id="result-values" hidden>
+                    <dl class="totals">
+                        <div><dt>Jami tushum</dt><dd id="revenue"></dd></div>
+                        <div><dt>Xarid xarajati</dt><dd id="cost"></dd></div>
+                    </dl>
+                    <div class="profit" id="profit-box"><div><span id="profit-label">Foyda</span><strong id="profit-value"></strong></div></div>
+                    <p class="preview-note" id="result-detail"></p>
+                </div>
+                <p class="preview-note">Ijara, soliq, yetkazib berish va boshqa qo‘shimcha xarajatlar hisobga olinmagan.</p>
+            </aside>
+            </div>
+        </section>
+
+        <section class="steps" aria-label="Hisoblash bosqichlari">
+            <article><span class="step-number">01</span><div><h2>Narxlarni kiriting</h2><p>Bir dona mahsulotning xarid va sotuv narxini belgilang.</p></div></article>
+            <article><span class="step-number">02</span><div><h2>Miqdorni belgilang</h2><p>Nechta mahsulot sotganingizni kiriting.</p></div></article>
+            <article><span class="step-number">03</span><div><h2>Natijani ko‘ring</h2><p>Tushum, xarajat va foyda yoki zararni bilib oling.</p></div></article>
+        </section>
+        <!-- Hisoblagichning maqsadi va chegaralarini tushuntiradigan bo‘lim. -->
+        <section class="info-section" id="loyiha-haqida" aria-labelledby="project-title">
+            <div class="section-heading">
+                <p class="eyebrow">LOYIHA HAQIDA</p>
+                <h2 id="project-title">Oddiy hisob. Tushunarli qaror.</h2>
+                <p>Hisobla kichik savdo hisob-kitoblarini yengillashtirish uchun yaratilgan.</p>
+            </div>
+            <div class="project-grid">
+                <article class="info-card">
+                    <span class="card-kicker">KIM UCHUN?</span>
+                    <h3>Savdo qiladigan har bir inson uchun</h3>
+                    <p>Bir xil xarid va sotuv narxidagi mahsulotlar bo‘yicha tushum, xarajat va ular orasidagi farqni tez bilib olishingiz mumkin.</p>
+                </article>
+                <article class="info-card">
+                    <span class="card-kicker">QANDAY HISOBLAYDI?</span>
+                    <h3>Uchta sodda amal bilan</h3>
+                    <ul class="formula-list">
+                        <li>Tushum = sotuv narxi × sotilgan soni</li>
+                        <li>Xarajat = xarid narxi × sotilgan soni</li>
+                        <li>Natija = tushum − xarajat</li>
+                    </ul>
+                </article>
+            </div>
+            <p class="scope-note"><strong>Hisob nimani anglatadi?</strong> Musbat natija — foyda, manfiy natija — zarar. Ijara, soliq, yetkazib berish va boshqa xarajatlar kiritilmagani uchun bu natija sof foydani anglatmaydi.</p>
+        </section>
+
+        <section class="faq-section" aria-labelledby="faq-title">
+            <div class="section-heading">
+                <p class="eyebrow">SAVOL-JAVOB</p>
+                <h2 id="faq-title">Hisoblashdan oldin bilib oling</h2>
+                <p>Savol ustiga bossangiz, javobi ochiladi.</p>
+            </div>
+            <div class="faq-list">
+                <details><summary>Bir nechta turdagi mahsulotni hisoblasam bo‘ladimi?</summary><p>Hozir har bir mahsulot turini alohida hisoblang. Xarid narxi yoki sotuv narxi farq qilsa, ularni bitta hisobga birlashtirmang. “Tozalash” tugmasi bilan yangi hisobni boshlashingiz mumkin.</p></details>
+                <details><summary>Nega natijada zarar chiqishi mumkin?</summary><p>Sotuv narxi xarid narxidan past bo‘lsa, zarar chiqadi. Narxlar teng bo‘lsa, foyda ham, zarar ham bo‘lmaydi.</p></details>
+                <details><summary>Bu mening sof foydammi?</summary><p>Bu faqat tushum bilan mahsulot xarid xarajati orasidagi farq. Sof foydani bilish uchun ijara, soliq, yetkazib berish kabi qo‘shimcha xarajatlarni ham ayirish kerak.</p></details>
+                <details><summary>Kiritgan ma’lumotlarim saqlanadimi?</summary><p>Hisoblar brauzeringizning o‘zida bajariladi. Sayt kiritgan sonlaringizni serverga yubormaydi va saqlamaydi. Sahifani yangilasangiz, hisobni qayta kiritish kerak bo‘lishi mumkin.</p></details>
+            </div>
+        </section>
+
+        <!-- Muallifning o‘zi bergan ma’lumotlar asosidagi tanishtiruv. -->
+        <section class="about-section" id="men-haqimda" aria-labelledby="about-title">
+            <div class="about-identity">
+                <p class="eyebrow">MEN HAQIMDA</p>
+                <div class="initials" aria-hidden="true">AA<span>.</span></div>
+                <h2 id="about-title">Axror Abdusalimov Musayevich</h2>
+                <p class="about-direction">Ma’lumotlar tahlili yo‘nalishida</p>
+            </div>
+            <div class="about-copy">
+                <p>Men <strong>Axror Abdusalimov Musayevich</strong>. O‘zbekiston Milliy universitetining <strong>Sun’iy intellekt yo‘nalishini tamomlaganman</strong>. Hozir ma’lumotlar tahlili yo‘nalishida rivojlanib, Python, Excel, Power BI va SQL bo‘yicha bilimlarimni amaliy mashqlar orqali mustahkamlab boryapman.</p>
+                <p>Ma’lumotlarni tartibga solish, tahlil qilish va natijalarni tushunarli ko‘rinishda taqdim etishga qiziqaman. Rus tilida kundalik mavzularda muloqot qila olaman.</p>
+                <p><strong>Hisobla</strong> — savdo hisob-kitoblarini osonlashtirish uchun yaratayotgan ilk veb-loyiham. Maqsadim — ma’lumotlar yordamida amaliy muammolarga yechim topadigan tahlilchi bo‘lish.</p>
+                <ul class="skill-tags" aria-label="Rivojlantirayotgan bilimlarim">
+                    <li>Python</li><li>Excel</li><li>Power BI</li><li>SQL</li><li>Rus tili · suhbat darajasi</li>
+                </ul>
+                <p class="project-credit">Hisobla — AI assistent yordamida HTML, CSS va JavaScript orqali yaratgan ilk veb-loyiham.</p>
+                <div class="contact-block">
+                    <h3>Bog‘lanish</h3>
+                    <a class="button" href="https://t.me/mmusayevich" target="_blank" rel="noopener noreferrer">Telegram: @mmusayevich <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container site-footer"><span>Hisobla — savdongizni hisoblang.</span><span>Axror Abdusalimov loyihasi</span><a href="#sahifa-boshi">Yuqoriga qaytish ↑</a></footer>
+</body>
+</html>
